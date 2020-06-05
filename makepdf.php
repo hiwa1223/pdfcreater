@@ -17,6 +17,13 @@ foreach ($names as $name) {
   $pdf->Cell(90,10,"名前 : $name","B");
 
   $pdf->Ln(40);
+  make_contents();
+}
+
+$pdf->OUtput();
+
+function make_contents(){
+  global $pdf;
 
   $Y = $pdf->getY();
 
@@ -138,5 +145,3 @@ foreach ($names as $name) {
   $pdf->Cell(50,10,"2+9=");
   $pdf->Ln(25);
 }
-
-$pdf->OUtput();
