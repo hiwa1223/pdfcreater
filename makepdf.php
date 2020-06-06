@@ -5,7 +5,8 @@ $pdf = new tFPDF;
 
 $pdf->AddFont('ShipporiMincho','','ShipporiMincho-TTF-Regular.ttf',true);
 
-$names = explode(",", $_GET['names']);
+$names = htmlentities($_GET['names'], ENT_QUOTES, "utf-8");
+$names = explode("\r\n", $names);
 
 foreach ($names as $name) {
 	$pdf->SetFont('ShipporiMincho','',20);
@@ -24,7 +25,9 @@ $pdf->Output();
 
 function make_contents(){	
   global $pdf;
-  $contents = explode(",", $_GET['contents']);
+  $contents = htmlentities($_GET['contents'], ENT_QUOTES, "utf-8");
+  $contents = explode("\r\n", $contents);
+
   $count = 0;
 	$Y = $pdf->getY();
 
